@@ -6,6 +6,8 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @EnableCaching
 @RestController
 @SpringBootApplication
@@ -32,7 +34,8 @@ public class ThrottledendpointsApplication {
 	 * </pre>
 	 */
 	@GetMapping("/")
-	public String hello() {
-	    return "world";
+	public String hello(HttpServletRequest request) {
+	    String clientIp = request.getRemoteAddr();
+	    return "world - " + clientIp;
 	}
 }
