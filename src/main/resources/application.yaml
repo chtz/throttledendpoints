@@ -1,2 +1,3 @@
+spring.application.name: throttledendpoints
 server:
   port: 6363
