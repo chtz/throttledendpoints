@@ -8,6 +8,7 @@ bucket4j:
   enabled: true
   filters:
     - cache-name: rate-limit-buckets
+      hide-http-response-headers: true
       url: .*
       rate-limits:
         - cache-key: "getRemoteAddr()"
