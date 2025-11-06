@@ -1,3 +1,21 @@
-spring.application.name: throttledendpoints
 server:
   port: 6363
+
+spring:
+  application.name: throttledendpoints
+  cache:
+    cache-names:
+      - rate-limit-buckets
+    caffeine:
+      spec: maximumSize=100000,expireAfterAccess=3600s
+  
+bucket4j:
+  enabled: true
+  filters:
+    - cache-name: rate-limit-buckets
+      url: .*
+      rate-limits:
+        - bandwidths:
+          - capacity: 5
+            time: 10
+            unit: seconds
