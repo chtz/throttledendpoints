@@ -15,6 +15,22 @@ public class ThrottledendpointsApplication {
 		SpringApplication.run(ThrottledendpointsApplication.class, args);
 	}
 
+	/**
+	 * <pre>
+	 * config:
+	 * rate-limits:
+     *   - bandwidths:
+     *     - capacity: 5
+     *       time: 10
+     *       unit: seconds
+	 * 
+	 * throttling (~every 2nd request):
+	 * watch -1 2 curl -v http://localhost:6363/
+	 * 
+	 * no throttling:
+	 * watch -n 2 curl -v http://localhost:6363/
+	 * </pre>
+	 */
 	@GetMapping("/")
 	public String hello() {
 	    return "world";
