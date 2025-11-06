@@ -18,6 +18,7 @@ public class ThrottledendpointsApplication {
 	}
 
 	/**
+	 * Sample 1: All endpoints and all source IPs share one global rate-limit bucket.
 	 * <pre>
 	 * config:
 	 * rate-limits:
@@ -33,6 +34,7 @@ public class ThrottledendpointsApplication {
 	 * watch -n 2 curl -v http://localhost:6363/
 	 * </pre>
 	 * 
+	 * Sample 2: All endpoints share one global rate-limit bucket, instantiated per source IP.
 	 * <pre>
      * config:
      * rate-limits:
@@ -58,6 +60,12 @@ public class ThrottledendpointsApplication {
 	@GetMapping("/")
 	public String hello(HttpServletRequest request) {
 	    String clientIp = request.getRemoteAddr();
-	    return "world - " + clientIp;
+	    return "world 1 - " + clientIp;
 	}
+	
+	@GetMapping("/h2")
+    public String hello2(HttpServletRequest request) {
+        String clientIp = request.getRemoteAddr();
+        return "world 2 - " + clientIp;
+    }
 }
