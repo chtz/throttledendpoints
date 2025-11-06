@@ -42,16 +42,16 @@
 			<version>0.13.0</version>
 		</dependency>
 
-		<dependency> <!-- required by app where this should be used, here to see
-			if incompatibilities arise -->
+		<!-- <dependency>  required by app where this should be used, here to see
+			if incompatibilities arise 
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-		</dependency>
+		</dependency> -->
 
-		<dependency> <!-- required by bucket4j for annotation support -->
+		<!-- <dependency>  required by bucket4j for annotation support 
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<dependency> <!-- required by bucket4j  -->
 			<groupId>org.springframework.boot</groupId>

@@ -27,10 +27,32 @@ public class ThrottledendpointsApplication {
      *       unit: seconds
 	 * 
 	 * throttling (~every 2nd request):
-	 * watch -1 2 curl -v http://localhost:6363/
+	 * watch -n 1 curl -v http://localhost:6363/
 	 * 
 	 * no throttling:
 	 * watch -n 2 curl -v http://localhost:6363/
+	 * </pre>
+	 * 
+	 * <pre>
+     * config:
+     * rate-limits:
+     *   - cache-key: "getRemoteAddr()"
+     *     bandwidths:
+     *     - capacity: 5
+     *       time: 10
+     *       unit: seconds
+     * 
+     * 50% throttling: 
+     * watch -n 1 curl -v http://192.168.1.11:6363/  # throttling ~every 2nd request
+     * watch -n 2 curl -v http://localhost:6363/     # no throttling
+     * 
+     * 100% throttling:
+     * watch -n 1 curl -v http://192.168.1.11:6363/  # throttling ~every 2nd request
+     * watch -n 1 curl -v http://localhost:6363/     # throttling ~every 2nd request
+     * 
+     * no throttling:
+     * watch -n 2 curl -v http://192.168.1.11:6363/  # no throttling
+     * watch -n 2 curl -v http://localhost:6363/     # no throttling
 	 * </pre>
 	 */
 	@GetMapping("/")

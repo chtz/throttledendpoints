@@ -15,7 +15,8 @@ bucket4j:
     - cache-name: rate-limit-buckets
       url: .*
       rate-limits:
-        - bandwidths:
+        - cache-key: "getRemoteAddr()"
+          bandwidths:
           - capacity: 5
             time: 10
             unit: seconds
